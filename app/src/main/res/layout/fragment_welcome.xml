@@ -1,0 +1,33 @@
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.sortabletableview.recyclerview.exampleapp.WelcomeFragment">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:layout_centerInParent="true"
+            tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome to the SortableTableView Example App"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginBottom="15dp"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="To see the examples, simply select one from the Drawer."
+                android:textSize="12sp"/>
+    </LinearLayout>
+
+</RelativeLayout>
