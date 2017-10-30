@@ -16,7 +16,7 @@ public final class Airline {
         return name;
     }
 
-    public int getLogoDrawableRes() {
+    public int getLogoImageRes() {
         return logoDrawableRes;
     }
 

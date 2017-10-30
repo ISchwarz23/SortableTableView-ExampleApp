@@ -13,7 +13,7 @@ import com.sortabletableview.recyclerview.exampleapp.data.Flight;
 import com.sortabletableview.recyclerview.exampleapp.data.FlightRepository;
 import com.sortabletableview.recyclerview.exampleapp.util.FlightStringValueExtractors;
 import com.sortabletableview.recyclerview.model.TableColumnWeightModel;
-import com.sortabletableview.recyclerview.toolkit.SimpleColumnAdapter;
+import com.sortabletableview.recyclerview.toolkit.SimpleTableDataColumnAdapter;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableHeaderAdapter;
 import com.sortabletableview.recyclerview.toolkit.TableDataRowBackgroundProviders;
 
@@ -48,14 +48,13 @@ public class SimpleDataExampleFragment extends Fragment {
 
         // set up header adapter
         final SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getContext(), "Time", "Flight", "Destination", "Airline");
-        headerAdapter.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTextIcons));
 
         // set up data adapter
         final TableDataColumnAdapterDelegator<Flight> dataAdapter = new TableDataColumnAdapterDelegator<>(getContext(), FlightRepository.getAllFlights());
-        dataAdapter.setColumnAdapter(0, new SimpleColumnAdapter<>(FlightStringValueExtractors.forDepartureTime()));
-        dataAdapter.setColumnAdapter(1, new SimpleColumnAdapter<>(FlightStringValueExtractors.forFlightNumber()));
-        dataAdapter.setColumnAdapter(2, new SimpleColumnAdapter<>(FlightStringValueExtractors.forDestination()));
-        dataAdapter.setColumnAdapter(3, new SimpleColumnAdapter<>(FlightStringValueExtractors.forAirline()));
+        dataAdapter.setColumnAdapter(0, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forDepartureTime()));
+        dataAdapter.setColumnAdapter(1, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forFlightNumber()));
+        dataAdapter.setColumnAdapter(2, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forDestination()));
+        dataAdapter.setColumnAdapter(3, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forAirline()));
 
         // set up the table view
         final TableView<Flight> tableView = view.findViewById(R.id.table_view);

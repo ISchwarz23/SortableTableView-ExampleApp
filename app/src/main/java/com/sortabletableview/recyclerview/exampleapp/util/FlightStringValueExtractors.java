@@ -1,7 +1,7 @@
 package com.sortabletableview.recyclerview.exampleapp.util;
 
 import com.sortabletableview.recyclerview.exampleapp.data.Flight;
-import com.sortabletableview.recyclerview.toolkit.SimpleColumnAdapter;
+import com.sortabletableview.recyclerview.toolkit.SimpleTableDataColumnAdapter;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -17,8 +17,8 @@ public final class FlightStringValueExtractors {
         //no instance
     }
 
-    public static SimpleColumnAdapter.StringValueExtractor<Flight> forDepartureTime() {
-        return new SimpleColumnAdapter.StringValueExtractor<Flight>() {
+    public static SimpleTableDataColumnAdapter.StringValueExtractor<Flight> forDepartureTime() {
+        return new SimpleTableDataColumnAdapter.StringValueExtractor<Flight>() {
 
             @Override
             public String getStringValue(final Flight flight) {
@@ -27,8 +27,8 @@ public final class FlightStringValueExtractors {
         };
     }
 
-    public static SimpleColumnAdapter.StringValueExtractor<Flight> forFlightNumber() {
-        return new SimpleColumnAdapter.StringValueExtractor<Flight>() {
+    public static SimpleTableDataColumnAdapter.StringValueExtractor<Flight> forFlightNumber() {
+        return new SimpleTableDataColumnAdapter.StringValueExtractor<Flight>() {
 
             @Override
             public String getStringValue(final Flight flight) {
@@ -37,8 +37,8 @@ public final class FlightStringValueExtractors {
         };
     }
 
-    public static SimpleColumnAdapter.StringValueExtractor<Flight> forDestination() {
-        return new SimpleColumnAdapter.StringValueExtractor<Flight>() {
+    public static SimpleTableDataColumnAdapter.StringValueExtractor<Flight> forDestination() {
+        return new SimpleTableDataColumnAdapter.StringValueExtractor<Flight>() {
 
             @Override
             public String getStringValue(final Flight flight) {
@@ -47,8 +47,8 @@ public final class FlightStringValueExtractors {
         };
     }
 
-    public static SimpleColumnAdapter.StringValueExtractor<Flight> forAirline() {
-        return new SimpleColumnAdapter.StringValueExtractor<Flight>() {
+    public static SimpleTableDataColumnAdapter.StringValueExtractor<Flight> forAirline() {
+        return new SimpleTableDataColumnAdapter.StringValueExtractor<Flight>() {
 
             @Override
             public String getStringValue(final Flight flight) {
