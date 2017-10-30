@@ -1,4 +1,4 @@
-package com.sortabletableview.recyclerview.exampleapp.simpledata;
+package com.sortabletableview.recyclerview.exampleapp.customdata;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +11,7 @@ import com.sortabletableview.recyclerview.TableView;
 import com.sortabletableview.recyclerview.exampleapp.R;
 import com.sortabletableview.recyclerview.exampleapp.data.Flight;
 import com.sortabletableview.recyclerview.exampleapp.data.FlightRepository;
+import com.sortabletableview.recyclerview.exampleapp.simpledata.FlightStringValueExtractors;
 import com.sortabletableview.recyclerview.model.TableColumnWeightModel;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableDataColumnAdapter;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableHeaderAdapter;
@@ -18,10 +19,10 @@ import com.sortabletableview.recyclerview.toolkit.TableDataRowBackgroundProvider
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SimpleDataExampleFragment#newInstance} factory method to
+ * Use the {@link CustomDataExampleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SimpleDataExampleFragment extends Fragment {
+public final class CustomDataExampleFragment extends Fragment {
 
     /**
      * Use this factory method to create a new instance of
@@ -29,8 +30,8 @@ public class SimpleDataExampleFragment extends Fragment {
      *
      * @return A new instance of fragment SimpleDataExampleFragment.
      */
-    public static SimpleDataExampleFragment newInstance() {
-        final SimpleDataExampleFragment fragment = new SimpleDataExampleFragment();
+    public static CustomDataExampleFragment newInstance() {
+        final CustomDataExampleFragment fragment = new CustomDataExampleFragment();
         final Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -46,14 +47,14 @@ public class SimpleDataExampleFragment extends Fragment {
         // ******************** Interesting Code Section ********************************************************************************************
 
         // set up header adapter
-        final SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getContext(), "Time", "Flight", "Destination", "Airline");
+        final SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getContext(), "Time", "Flight", "Destination", "Airline", "Gate");
 
         // set up data adapter
         final TableDataColumnAdapterDelegator<Flight> dataAdapter = new TableDataColumnAdapterDelegator<>(getContext(), FlightRepository.getAllFlights());
-        dataAdapter.setColumnAdapter(0, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forDepartureTime()));
-        dataAdapter.setColumnAdapter(1, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forFlightNumber()));
+        dataAdapter.setColumnAdapter(0, new DepartureColumnAdapter());
+        dataAdapter.setColumnAdapter(1, new FlightNumberColumnAdapter());
         dataAdapter.setColumnAdapter(2, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forDestination()));
-        dataAdapter.setColumnAdapter(3, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forAirline()));
+        dataAdapter.setColumnAdapter(3, new AirlineColumnAdapter());
 
         // set up the table view
         final TableView<Flight> tableView = view.findViewById(R.id.table_view);
@@ -69,10 +70,10 @@ public class SimpleDataExampleFragment extends Fragment {
 
         // change column widths
         final TableColumnWeightModel tableColumnModel = new TableColumnWeightModel(4);
-        tableColumnModel.setColumnWeight(0, 2);
+        tableColumnModel.setColumnWeight(0, 1);
         tableColumnModel.setColumnWeight(1, 2);
         tableColumnModel.setColumnWeight(2, 3);
-        tableColumnModel.setColumnWeight(3, 3);
+        tableColumnModel.setColumnWeight(3, 2);
         tableView.setColumnModel(tableColumnModel);
 
         return view;

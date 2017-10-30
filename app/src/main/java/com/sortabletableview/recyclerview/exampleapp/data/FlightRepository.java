@@ -1,17 +1,19 @@
 package com.sortabletableview.recyclerview.exampleapp.data;
 
+import com.sortabletableview.recyclerview.exampleapp.R;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public final class FlightRepository {
 
-    private static final Airline AIRLINE_SWISS_INTERNATIONAL = new Airline("Swiss International", "LX", 0);
-    private static final Airline AIRLINE_BRITISH_AIRWAYS = new Airline("British Airways", "BA", 0);
-    private static final Airline AIRLINE_AIR_FRANCE = new Airline("Air France", "AF", 0);
-    private static final Airline AIRLINE_IBERIA = new Airline("Iberia", "IBE", 0);
-    private static final Airline AIRLINE_UNITED_AIRLINES = new Airline("United Airlines", "UA", 0);
-    private static final Airline AIRLINE_AMERICAN_AIRLINES = new Airline("American Airlines", "AA", 0);
+    private static final Airline AIRLINE_SWISS_INTERNATIONAL = new Airline("Swiss International", "LX", R.mipmap.ic_airline_swiss);
+    private static final Airline AIRLINE_BRITISH_AIRWAYS = new Airline("British Airways", "BA", R.mipmap.ic_airline_british_airways);
+    private static final Airline AIRLINE_AIR_FRANCE = new Airline("Air France", "AF", R.mipmap.ic_airline_airfrance);
+    private static final Airline AIRLINE_IBERIA = new Airline("Iberia", "IBE", R.mipmap.ic_airline_iberia);
+    private static final Airline AIRLINE_UNITED_AIRLINES = new Airline("United Airlines", "UA", R.mipmap.ic_airlines_united);
+    private static final Airline AIRLINE_AMERICAN_AIRLINES = new Airline("American Airlines", "AA", R.mipmap.ic_airline_american);
 
     private FlightRepository() {
         //no instance

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.sortabletableview.recyclerview.exampleapp.customdata.CustomDataExampleFragment;
 import com.sortabletableview.recyclerview.exampleapp.simpledata.SimpleDataExampleFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,13 +79,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         final int id = item.getItemId();
 
+        getSupportActionBar().setTitle(item.getTitle());
         switch (id) {
             case R.id.nav_simple_data:
-                getSupportActionBar().setTitle(item.getTitle());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SimpleDataExampleFragment.newInstance()).commit();
                 break;
+            case R.id.nav_custom_data:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_container, CustomDataExampleFragment.newInstance()).commit();
+                break;
             default:
-                getSupportActionBar().setTitle(item.getTitle());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, WelcomeFragment.newInstance()).commit();
         }
 

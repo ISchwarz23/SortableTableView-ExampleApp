@@ -1,4 +1,4 @@
-package com.sortabletableview.recyclerview.exampleapp.util;
+package com.sortabletableview.recyclerview.exampleapp.customdata;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import com.sortabletableview.recyclerview.TableDataColumnAdapterDelegator;
 import com.sortabletableview.recyclerview.exampleapp.data.Flight;
 
-public class AirlineColumnAdapter extends TableDataColumnAdapterDelegator.TableDataColumnAdapter<Flight, AirlineColumnAdapter.ImageViewHolder> {
+public final class AirlineColumnAdapter extends TableDataColumnAdapterDelegator.TableDataColumnAdapter<Flight, AirlineColumnAdapter.ImageViewHolder> {
 
     @Override
     public ImageViewHolder onCreateColumnCellViewHolder(final ViewGroup parent, final int viewType) {

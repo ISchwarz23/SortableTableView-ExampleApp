@@ -1,4 +1,4 @@
-package com.sortabletableview.recyclerview.exampleapp.util;
+package com.sortabletableview.recyclerview.exampleapp.simpledata;
 
 import com.sortabletableview.recyclerview.exampleapp.data.Flight;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableDataColumnAdapter;
@@ -53,6 +53,16 @@ public final class FlightStringValueExtractors {
             @Override
             public String getStringValue(final Flight flight) {
                 return flight.getAirline().getName();
+            }
+        };
+    }
+
+    public static SimpleTableDataColumnAdapter.StringValueExtractor<Flight> forGate() {
+        return new SimpleTableDataColumnAdapter.StringValueExtractor<Flight>() {
+
+            @Override
+            public String getStringValue(final Flight flight) {
+                return "" + flight.getGate();
             }
         };
     }
