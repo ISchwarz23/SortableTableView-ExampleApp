@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.sortabletableview.recyclerview.exampleapp.customdata.CustomDataExampleFragment;
+import com.sortabletableview.recyclerview.exampleapp.selectionhandling.SelectionHandlingFragment;
 import com.sortabletableview.recyclerview.exampleapp.simpledata.SimpleDataExampleFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,8 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(final View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+//                // do stuff
 //            }
 //        });
 
@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_custom_data:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, CustomDataExampleFragment.newInstance()).commit();
+                break;
+            case R.id.nav_selection_handling:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SelectionHandlingFragment.newInstance()).commit();
                 break;
             case R.id.nav_see_on_github:
                 final Intent githubIntent = new Intent(Intent.ACTION_VIEW);

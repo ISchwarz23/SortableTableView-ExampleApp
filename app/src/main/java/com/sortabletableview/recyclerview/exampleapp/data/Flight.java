@@ -1,8 +1,10 @@
 package com.sortabletableview.recyclerview.exampleapp.data;
 
+import com.sortabletableview.recyclerview.toolkit.SelectionHelper;
+
 import java.util.Calendar;
 
-public final class Flight {
+public final class Flight implements SelectionHelper.SelectableItem {
 
     public static final class Status {
 
@@ -71,6 +73,8 @@ public final class Flight {
     private final int gate;
     private final Status status;
 
+    private boolean isSelected;
+
     Flight(final Calendar departure, final Number flightNumber, final String destination, final Airline airline, final int gate, final Status status) {
         this.departure = departure;
         this.flightNumber = flightNumber;
@@ -102,5 +106,15 @@ public final class Flight {
 
     public Status getStatus() {
         return status;
+    }
+
+    @Override
+    public void setSelected(boolean isSelected) {
+        this.isSelected = isSelected;
+    }
+
+    @Override
+    public boolean isSelected() {
+        return isSelected;
     }
 }

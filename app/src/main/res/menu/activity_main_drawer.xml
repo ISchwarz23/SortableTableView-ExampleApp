@@ -12,6 +12,10 @@
                 android:id="@+id/nav_custom_data"
                 android:icon="@drawable/ic_menu_custom_data"
                 android:title="Custom Data"/>
+        <item
+                android:id="@+id/nav_selection_handling"
+                android:icon="@drawable/ic_selection"
+                android:title="Selection Handling"/>
 
         <item android:title="Links">
             <menu android:checkableBehavior="single">
