@@ -1,6 +1,7 @@
 package com.sortabletableview.recyclerview.exampleapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(final Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(FIRST_LAUNCH, false);
     }
@@ -97,6 +98,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_custom_data:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, CustomDataExampleFragment.newInstance()).commit();
+                break;
+            case R.id.nav_see_on_github:
+                final Intent githubIntent = new Intent(Intent.ACTION_VIEW);
+                githubIntent.setData(Uri.parse("https://github.com/ISchwarz23/SortableTableView-ExampleApp"));
+                startActivity(githubIntent);
                 break;
             case R.id.nav_support:
                 startActivity(new Intent(this, SupportActivity.class));
