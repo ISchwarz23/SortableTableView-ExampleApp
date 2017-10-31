@@ -14,6 +14,8 @@ import com.sortabletableview.recyclerview.exampleapp.simpledata.SimpleDataExampl
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String FIRST_LAUNCH = "FIRST_LAUNCH";
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            }
 //        });
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_container, WelcomeFragment.newInstance()).commit();
+        if (savedInstanceState == null || savedInstanceState.getBoolean(FIRST_LAUNCH, true)) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_container, WelcomeFragment.newInstance()).commit();
+        }
 
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -40,6 +44,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         final NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(FIRST_LAUNCH, false);
     }
 
     @Override

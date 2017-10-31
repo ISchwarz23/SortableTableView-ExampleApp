@@ -1,5 +1,6 @@
 package com.sortabletableview.recyclerview.exampleapp.simpledata;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -21,7 +22,7 @@ import com.sortabletableview.recyclerview.toolkit.TableDataRowBackgroundProvider
  * Use the {@link SimpleDataExampleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SimpleDataExampleFragment extends Fragment {
+public final class SimpleDataExampleFragment extends Fragment {
 
     /**
      * Use this factory method to create a new instance of
@@ -46,7 +47,8 @@ public class SimpleDataExampleFragment extends Fragment {
         // ******************** Interesting Code Section ********************************************************************************************
 
         // set up header adapter
-        final SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getContext(), "Time", "Flight", "Destination", "Airline");
+        final SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getContext(), "Time", "Airline", "Flight", "Destination", "Gate", "Status");
+        headerAdapter.setTextColor(ContextCompat.getColor(getContext(), R.color.colorHeaderText));
 
         // set up data adapter
         final TableDataColumnAdapterDelegator<Flight> dataAdapter = new TableDataColumnAdapterDelegator<>(getContext(), FlightRepository.getAllFlights());
@@ -54,13 +56,13 @@ public class SimpleDataExampleFragment extends Fragment {
         dataAdapter.setColumnAdapter(1, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forFlightNumber()));
         dataAdapter.setColumnAdapter(2, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forDestination()));
         dataAdapter.setColumnAdapter(3, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forAirline()));
+        dataAdapter.setColumnAdapter(4, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forGate()));
+        dataAdapter.setColumnAdapter(5, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forStatus()));
 
         // set up the table view
         final TableView<Flight> tableView = view.findViewById(R.id.table_view);
         tableView.setHeaderAdapter(headerAdapter);
         tableView.setDataAdapter(dataAdapter);
-
-        // ******************** Interesting Code Section ********************************************************************************************
 
         // do some styling
         final int colorOddRows = ContextCompat.getColor(getContext(), R.color.colorOddRows);
@@ -68,12 +70,23 @@ public class SimpleDataExampleFragment extends Fragment {
         tableView.setDataRowBackgroundProvider(TableDataRowBackgroundProviders.alternatingRowColors(colorEvenRows, colorOddRows));
 
         // change column widths
-        final TableColumnWeightModel tableColumnModel = new TableColumnWeightModel(4);
+        final TableColumnWeightModel tableColumnModel;
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // show 6 columns in landscape mode
+            tableColumnModel = new TableColumnWeightModel(6);
+            tableColumnModel.setColumnWeight(4, 1);
+            tableColumnModel.setColumnWeight(5, 2);
+        } else {
+            // show 4 columns in portrait mode
+            tableColumnModel = new TableColumnWeightModel(4);
+        }
         tableColumnModel.setColumnWeight(0, 2);
         tableColumnModel.setColumnWeight(1, 2);
         tableColumnModel.setColumnWeight(2, 3);
         tableColumnModel.setColumnWeight(3, 3);
         tableView.setColumnModel(tableColumnModel);
+
+        // ******************** Interesting Code Section ********************************************************************************************
 
         return view;
     }

@@ -66,4 +66,23 @@ public final class FlightStringValueExtractors {
             }
         };
     }
+
+    public static SimpleTableDataColumnAdapter.StringValueExtractor<Flight> forStatus() {
+        return new SimpleTableDataColumnAdapter.StringValueExtractor<Flight>() {
+
+            @Override
+            public String getStringValue(final Flight flight) {
+                switch (flight.getStatus().getName()) {
+                    case ON_TIME:
+                        return "On Time";
+                    case DELAYED:
+                        return "Delayed";// + "(" + flight.getStatus().getDelayInMinutes() + "m)";
+                    case CANCELED:
+                        return "Canceled";
+                    default:
+                        return "";
+                }
+            }
+        };
+    }
 }

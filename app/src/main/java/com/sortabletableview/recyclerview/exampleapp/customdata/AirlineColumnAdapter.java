@@ -11,6 +11,7 @@ public final class AirlineColumnAdapter extends TableDataColumnAdapterDelegator.
     @Override
     public ImageViewHolder onCreateColumnCellViewHolder(final ViewGroup parent, final int viewType) {
         final ImageView imageView = new ImageView(getContext());
+        imageView.setScaleType(ImageView.ScaleType.FIT_START);
         return new ImageViewHolder(imageView);
     }
 
