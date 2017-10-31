@@ -1,5 +1,6 @@
 package com.sortabletableview.recyclerview.exampleapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -96,6 +97,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_custom_data:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, CustomDataExampleFragment.newInstance()).commit();
+                break;
+            case R.id.nav_support:
+                startActivity(new Intent(this, SupportActivity.class));
                 break;
             default:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, WelcomeFragment.newInstance()).commit();
