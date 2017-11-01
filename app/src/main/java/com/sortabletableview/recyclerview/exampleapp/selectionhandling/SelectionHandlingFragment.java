@@ -1,6 +1,5 @@
 package com.sortabletableview.recyclerview.exampleapp.selectionhandling;
 
-
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -30,7 +29,7 @@ import com.sortabletableview.recyclerview.toolkit.TableDataRowBackgroundProvider
  * Use the {@link SelectionHandlingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SelectionHandlingFragment extends Fragment {
+public final class SelectionHandlingFragment extends Fragment {
 
     /**
      * Use this factory method to create a new instance of

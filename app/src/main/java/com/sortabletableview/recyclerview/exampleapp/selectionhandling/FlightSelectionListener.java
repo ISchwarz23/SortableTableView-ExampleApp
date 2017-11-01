@@ -6,13 +6,13 @@ import com.sortabletableview.recyclerview.exampleapp.simpledata.FlightStringValu
 import com.sortabletableview.recyclerview.toolkit.SelectionHelper;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableDataColumnAdapter;
 
-public class FlightSelectionListener implements SelectionHelper.SelectionListener<Flight> {
+public final class FlightSelectionListener implements SelectionHelper.SelectionListener<Flight> {
 
     private static final SimpleTableDataColumnAdapter.StringValueExtractor<Flight> FLIGHT_STRING_VALUE_EXTRACTOR = FlightStringValueExtractors.forFlightNumber();
 
     private final Snackbar snackbar;
 
-    public FlightSelectionListener(Snackbar snackbar) {
+    FlightSelectionListener(final Snackbar snackbar) {
         this.snackbar = snackbar;
     }
 
@@ -33,7 +33,7 @@ public class FlightSelectionListener implements SelectionHelper.SelectionListene
             displayText += FLIGHT_STRING_VALUE_EXTRACTOR.getStringValue(selectionHelper.getSelectedItems().get(0));
             displayText += "'";
         } else if (selectionHelper.getSelectedItems().size() == 2) {
-            displayText += "You selected Flight ";
+            displayText += "You selected Flight '";
             displayText += FLIGHT_STRING_VALUE_EXTRACTOR.getStringValue(selectionHelper.getSelectedItems().get(0));
             displayText += "' and '";
             displayText += FLIGHT_STRING_VALUE_EXTRACTOR.getStringValue(selectionHelper.getSelectedItems().get(1));
