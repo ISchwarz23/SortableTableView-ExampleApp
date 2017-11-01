@@ -21,6 +21,10 @@
                 android:icon="@drawable/ic_menu_search"
                 android:title="Search Data"/>
         <item
+                android:id="@+id/nav_sort_data"
+                android:icon="@drawable/ic_menu_sort"
+                android:title="Sort Data"/>
+        <item
                 android:id="@+id/nav_selection_handling"
                 android:icon="@drawable/ic_menu_selection"
                 android:title="Selection Handling"/>

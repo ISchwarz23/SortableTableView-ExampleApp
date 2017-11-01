@@ -15,10 +15,12 @@ import com.sortabletableview.recyclerview.exampleapp.loaddata.LoadDataFragment;
 import com.sortabletableview.recyclerview.exampleapp.searchdata.SearchDataFragment;
 import com.sortabletableview.recyclerview.exampleapp.selectionhandling.SelectionHandlingFragment;
 import com.sortabletableview.recyclerview.exampleapp.simpledata.SimpleDataExampleFragment;
+import com.sortabletableview.recyclerview.exampleapp.sortdata.SortDataExampleFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String FIRST_LAUNCH = "FIRST_LAUNCH";
+    private static String title = "Welcome";
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         final NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        setActivityTitle(title);
     }
 
     @Override
@@ -69,8 +73,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(final MenuItem item) {
         // Handle navigation view item clicks here.
         final int id = item.getItemId();
+        setActivityTitle(item.getTitle().toString());
 
-        getSupportActionBar().setTitle(item.getTitle());
         switch (id) {
             case R.id.nav_simple_data:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SimpleDataExampleFragment.newInstance()).commit();
@@ -83,6 +87,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_search_data:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SearchDataFragment.newInstance()).commit();
+                break;
+            case R.id.nav_sort_data:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SortDataExampleFragment.newInstance()).commit();
                 break;
             case R.id.nav_selection_handling:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SelectionHandlingFragment.newInstance()).commit();
@@ -102,5 +109,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void setActivityTitle(final String title) {
+        this.title = title;
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
     }
 }
