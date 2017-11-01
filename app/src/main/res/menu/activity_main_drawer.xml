@@ -22,18 +22,18 @@
                 android:title="Search Data"/>
         <item
                 android:id="@+id/nav_selection_handling"
-                android:icon="@drawable/ic_selection"
+                android:icon="@drawable/ic_menu_selection"
                 android:title="Selection Handling"/>
 
         <item android:title="Links">
             <menu android:checkableBehavior="single">
                 <item
                         android:id="@+id/nav_see_on_github"
-                        android:icon="@drawable/ic_github"
+                        android:icon="@drawable/ic_menu_github"
                         android:title="See complete Code"/>
                 <item
                         android:id="@+id/nav_support"
-                        android:icon="@drawable/ic_support"
+                        android:icon="@drawable/ic_menu_support"
                         android:title="Get Support"/>
             </menu>
         </item>
