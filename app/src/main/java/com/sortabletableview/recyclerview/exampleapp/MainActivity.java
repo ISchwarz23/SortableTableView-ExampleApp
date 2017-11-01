@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.sortabletableview.recyclerview.exampleapp.customdata.CustomDataExampleFragment;
+import com.sortabletableview.recyclerview.exampleapp.loaddata.LoadDataFragment;
 import com.sortabletableview.recyclerview.exampleapp.selectionhandling.SelectionHandlingFragment;
 import com.sortabletableview.recyclerview.exampleapp.simpledata.SimpleDataExampleFragment;
 
@@ -98,6 +99,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_custom_data:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, CustomDataExampleFragment.newInstance()).commit();
+                break;
+            case R.id.nav_load_data:
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_container, LoadDataFragment.newInstance()).commit();
                 break;
             case R.id.nav_selection_handling:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SelectionHandlingFragment.newInstance()).commit();

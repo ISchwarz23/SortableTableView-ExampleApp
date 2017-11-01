@@ -48,7 +48,7 @@ public final class SelectionHandlingFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_full_size_table, container, false);
+        final View view = inflater.inflate(R.layout.fragment_with_table, container, false);
 
         // set up header adapter
         final SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getContext(), "Time", "Airline", "Flight", "Destination", "Gate", "Status");
@@ -89,7 +89,6 @@ public final class SelectionHandlingFragment extends Fragment {
         tableColumnModel.setColumnWeight(2, 3);
         tableColumnModel.setColumnWeight(3, 5);
         tableView.setColumnModel(tableColumnModel);
-
 
         // ******************** Interesting Code Section ********************************************************************************************
 

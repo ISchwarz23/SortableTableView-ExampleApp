@@ -42,7 +42,7 @@ public final class SimpleDataExampleFragment extends Fragment {
                              final Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_full_size_table, container, false);
+        final View view = inflater.inflate(R.layout.fragment_with_table, container, false);
 
         // ******************** Interesting Code Section ********************************************************************************************
 

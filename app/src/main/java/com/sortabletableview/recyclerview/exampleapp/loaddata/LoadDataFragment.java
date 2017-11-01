@@ -1,4 +1,4 @@
-package com.sortabletableview.recyclerview.exampleapp.customdata;
+package com.sortabletableview.recyclerview.exampleapp.loaddata;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,29 +10,35 @@ import android.view.ViewGroup;
 import com.sortabletableview.recyclerview.TableDataColumnAdapterDelegator;
 import com.sortabletableview.recyclerview.TableView;
 import com.sortabletableview.recyclerview.exampleapp.R;
+import com.sortabletableview.recyclerview.exampleapp.customdata.AirlineColumnAdapter;
+import com.sortabletableview.recyclerview.exampleapp.customdata.DepartureColumnAdapter;
+import com.sortabletableview.recyclerview.exampleapp.customdata.FlightNumberColumnAdapter;
+import com.sortabletableview.recyclerview.exampleapp.customdata.FlightStatusColumnAdapter;
 import com.sortabletableview.recyclerview.exampleapp.data.Flight;
-import com.sortabletableview.recyclerview.exampleapp.data.FlightRepository;
 import com.sortabletableview.recyclerview.exampleapp.simpledata.FlightStringValueExtractors;
+import com.sortabletableview.recyclerview.listeners.SwipeToRefreshListener;
 import com.sortabletableview.recyclerview.model.TableColumnWeightModel;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableDataColumnAdapter;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableHeaderAdapter;
 import com.sortabletableview.recyclerview.toolkit.TableDataRowBackgroundProviders;
 
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CustomDataExampleFragment#newInstance} factory method to
+ * Use the {@link LoadDataFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public final class CustomDataExampleFragment extends Fragment {
+public final class LoadDataFragment extends Fragment {
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment SimpleDataExampleFragment.
+     * @return A new instance of fragment LoadDataFragment.
      */
-    public static CustomDataExampleFragment newInstance() {
-        final CustomDataExampleFragment fragment = new CustomDataExampleFragment();
+    public static LoadDataFragment newInstance() {
+        final LoadDataFragment fragment = new LoadDataFragment();
         final Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -41,18 +47,15 @@ public final class CustomDataExampleFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              final Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_with_table, container, false);
-
-        // ******************** Interesting Code Section ********************************************************************************************
 
         // set up header adapter
         final SimpleTableHeaderAdapter headerAdapter = new SimpleTableHeaderAdapter(getContext(), "Time", "Airline", "Flight", "Destination", "Gate", "Status");
         headerAdapter.setTextColor(ContextCompat.getColor(getContext(), R.color.colorHeaderText));
 
         // set up data adapter
-        final TableDataColumnAdapterDelegator<Flight> dataAdapter = new TableDataColumnAdapterDelegator<>(getContext(), FlightRepository.getAllFlights());
+        final TableDataColumnAdapterDelegator<Flight> dataAdapter = new TableDataColumnAdapterDelegator<>(getContext(), new ArrayList<Flight>());
         dataAdapter.setColumnAdapter(0, new DepartureColumnAdapter());
         dataAdapter.setColumnAdapter(1, new AirlineColumnAdapter());
         dataAdapter.setColumnAdapter(2, new FlightNumberColumnAdapter());
@@ -86,6 +89,17 @@ public final class CustomDataExampleFragment extends Fragment {
         tableColumnModel.setColumnWeight(2, 3);
         tableColumnModel.setColumnWeight(3, 5);
         tableView.setColumnModel(tableColumnModel);
+
+        // ******************** Interesting Code Section ********************************************************************************************
+
+        tableView.setEmptyDataIndicatorView(inflater.inflate(R.layout.view_emty_data_indicator, container, false));
+        tableView.setSwipeToRefreshEnabled(true);
+        tableView.setSwipeToRefreshListener(new SwipeToRefreshListener() {
+            @Override
+            public void onRefresh(final RefreshIndicator refreshIndicator) {
+                new LoadFlightTask(tableView.getDataAdapter(), refreshIndicator).execute();
+            }
+        });
 
         // ******************** Interesting Code Section ********************************************************************************************
 
