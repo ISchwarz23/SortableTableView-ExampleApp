@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_see_homepage:
                 final Intent homepageIntent = new Intent(Intent.ACTION_VIEW);
-                homepageIntent.setData(Uri.parse("https://www.sortabletableview.com"));
+                homepageIntent.setData(Uri.parse("http://www.sortabletableview.com"));
                 startActivity(homepageIntent);
                 break;
             case R.id.nav_support:
