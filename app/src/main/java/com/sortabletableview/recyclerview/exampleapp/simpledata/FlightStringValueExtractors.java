@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 public final class FlightStringValueExtractors {
 
     private static final NumberFormat FLIGHT_NUMBER_FORMATTER = new DecimalFormat("000");
-    private static final DateFormat FORMATTER = SimpleDateFormat.getTimeInstance(DateFormat.SHORT);
+    private static final DateFormat FORMATTER = new SimpleDateFormat("HH:mm");
 
     private FlightStringValueExtractors() {
         //no instance

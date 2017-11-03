@@ -53,9 +53,9 @@ public final class SimpleDataExampleFragment extends Fragment {
         // set up data adapter
         final TableDataColumnAdapterDelegator<Flight> dataAdapter = new TableDataColumnAdapterDelegator<>(getContext(), FlightRepository.getAllFlights());
         dataAdapter.setColumnAdapter(0, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forDepartureTime()));
-        dataAdapter.setColumnAdapter(1, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forFlightNumber()));
-        dataAdapter.setColumnAdapter(2, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forDestination()));
-        dataAdapter.setColumnAdapter(3, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forAirline()));
+        dataAdapter.setColumnAdapter(1, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forAirline()));
+        dataAdapter.setColumnAdapter(2, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forFlightNumber()));
+        dataAdapter.setColumnAdapter(3, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forDestination()));
         dataAdapter.setColumnAdapter(4, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forGate()));
         dataAdapter.setColumnAdapter(5, new SimpleTableDataColumnAdapter<>(FlightStringValueExtractors.forStatus()));
 
@@ -81,8 +81,8 @@ public final class SimpleDataExampleFragment extends Fragment {
             tableColumnModel = new TableColumnWeightModel(4);
         }
         tableColumnModel.setColumnWeight(0, 2);
-        tableColumnModel.setColumnWeight(1, 2);
-        tableColumnModel.setColumnWeight(2, 3);
+        tableColumnModel.setColumnWeight(1, 3);
+        tableColumnModel.setColumnWeight(2, 2);
         tableColumnModel.setColumnWeight(3, 3);
         tableView.setColumnModel(tableColumnModel);
 
