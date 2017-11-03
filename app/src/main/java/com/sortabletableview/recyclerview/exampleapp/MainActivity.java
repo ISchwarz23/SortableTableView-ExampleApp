@@ -73,34 +73,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(final MenuItem item) {
         // Handle navigation view item clicks here.
         final int id = item.getItemId();
-        setActivityTitle(item.getTitle().toString());
 
         switch (id) {
             case R.id.nav_simple_data:
+                setActivityTitle(item.getTitle().toString());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SimpleDataExampleFragment.newInstance()).commit();
                 break;
             case R.id.nav_custom_data:
+                setActivityTitle(item.getTitle().toString());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, CustomDataExampleFragment.newInstance()).commit();
                 break;
             case R.id.nav_load_data:
+                setActivityTitle(item.getTitle().toString());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, LoadDataFragment.newInstance()).commit();
                 break;
             case R.id.nav_search_data:
+                setActivityTitle(item.getTitle().toString());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SearchDataFragment.newInstance()).commit();
                 break;
             case R.id.nav_sort_data:
+                setActivityTitle(item.getTitle().toString());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SortDataExampleFragment.newInstance()).commit();
                 break;
             case R.id.nav_selection_handling:
+                setActivityTitle(item.getTitle().toString());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SelectionHandlingFragment.newInstance()).commit();
                 break;
             case R.id.nav_see_on_github:
                 final Intent githubIntent = new Intent(Intent.ACTION_VIEW);
-                githubIntent.setData(Uri.parse("https://github.com/ISchwarz23/SortableTableView-ExampleApp"));
+                githubIntent.setData(Uri.parse("https://github.com/ISchwarz23/SortableTableView-ExampleApp?files=1"));
                 startActivity(githubIntent);
                 break;
+            case R.id.nav_see_homepage:
+                final Intent homepageIntent = new Intent(Intent.ACTION_VIEW);
+                homepageIntent.setData(Uri.parse("https://www.sortabletableview.com"));
+                startActivity(homepageIntent);
+                break;
             case R.id.nav_support:
-                startActivity(new Intent(this, SupportActivity.class));
+                final Intent mailIntent = new Intent(Intent.ACTION_SENDTO);
+                mailIntent.setData(Uri.parse("mailto:"));
+                mailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"SortableTableView Support-Team <support@sortabletableview.com>"});
+                mailIntent.putExtra(Intent.EXTRA_SUBJECT, "Support Request from Example App");
+                mailIntent.putExtra(Intent.EXTRA_TEXT, "");
+                startActivity(Intent.createChooser(mailIntent, "Send Email to Support"));
+//                startActivity(new Intent(this, SupportActivity.class));
                 break;
             default:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, WelcomeFragment.newInstance()).commit();
