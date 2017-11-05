@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.sortabletableview.recyclerview.TableDataColumnAdapterDelegator;
 import com.sortabletableview.recyclerview.exampleapp.R;
 import com.sortabletableview.recyclerview.exampleapp.data.Flight;
 
@@ -11,7 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public final class DepartureColumnAdapter extends com.sortabletableview.recyclerview.TableDataColumnAdapterDelegator.TableDataColumnAdapter<Flight, DepartureColumnAdapter.DepartureViewHolder> {
+public final class DepartureColumnAdapter extends TableDataColumnAdapterDelegator.TableDataColumnAdapter<Flight, DepartureColumnAdapter.DepartureViewHolder> {
 
     @Override
     public DepartureViewHolder onCreateColumnCellViewHolder(final ViewGroup parent, final int viewType) {
