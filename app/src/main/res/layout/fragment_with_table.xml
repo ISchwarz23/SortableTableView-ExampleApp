@@ -10,7 +10,7 @@
             android:id="@+id/table_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:tableView_headerColor="?attr/colorPrimary"
+            app:tableView_headerBackgroundColor="?attr/colorPrimary"
             app:tableView_swipeToRefreshIndicatorColor="?attr/colorAccent"
             app:tableView_headerElevation="10dp"/>
 
