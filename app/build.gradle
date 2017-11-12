@@ -21,7 +21,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.sortabletableview.recyclerview:sortabletableview:1.4.0'
+    compile 'com.sortabletableview.recyclerview:sortabletableview:1.5.0'
 
     compile 'com.android.support:appcompat-v7:27.+'
     compile 'com.android.support:design:27.+'

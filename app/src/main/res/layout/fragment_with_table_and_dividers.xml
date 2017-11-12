@@ -1,0 +1,23 @@
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.sortabletableview.recyclerview.exampleapp.simpledata.SimpleDataExampleFragment">
+
+    <com.sortabletableview.recyclerview.TableView
+            android:id="@+id/table_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:tableView_headerBackgroundColor="?attr/colorPrimary"
+            app:tableView_swipeToRefreshIndicatorColor="?attr/colorAccent"
+            app:tableView_horizontalDividerColor="@color/colorDivider"
+            app:tableView_horizontalDividerSize="2"
+            app:tableView_verticalDividerColor="@color/colorDivider"
+            app:tableView_verticalDividerSize="2"
+            app:tableView_verticalDividerColorHeader="@color/colorTextIcons"
+            app:tableView_verticalDividerSizeHeader="2"
+            app:tableView_headerElevation="10dp"/>
+
+</FrameLayout>

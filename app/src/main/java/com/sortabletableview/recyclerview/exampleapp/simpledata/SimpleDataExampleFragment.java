@@ -15,7 +15,6 @@ import com.sortabletableview.recyclerview.exampleapp.data.FlightRepository;
 import com.sortabletableview.recyclerview.model.TableColumnWeightModel;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableDataColumnAdapter;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableHeaderAdapter;
-import com.sortabletableview.recyclerview.toolkit.TableDataRowBackgroundProviders;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,7 +41,7 @@ public final class SimpleDataExampleFragment extends Fragment {
                              final Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_with_table, container, false);
+        final View view = inflater.inflate(R.layout.fragment_with_table_and_dividers, container, false);
 
         // ******************** Interesting Code Section ********************************************************************************************
 
@@ -65,9 +64,9 @@ public final class SimpleDataExampleFragment extends Fragment {
         tableView.setDataAdapter(dataAdapter);
 
         // do some styling
-        final int colorOddRows = ContextCompat.getColor(getContext(), R.color.colorOddRows);
-        final int colorEvenRows = ContextCompat.getColor(getContext(), R.color.colorEvenRows);
-        tableView.setDataRowBackgroundProvider(TableDataRowBackgroundProviders.alternatingRowColors(colorEvenRows, colorOddRows));
+//        final int colorOddRows = ContextCompat.getColor(getContext(), R.color.colorOddRows);
+//        final int colorEvenRows = ContextCompat.getColor(getContext(), R.color.colorEvenRows);
+//        tableView.setDataRowBackgroundProvider(TableDataRowBackgroundProviders.alternatingRowColors(colorEvenRows, colorOddRows));
 
         // change column widths
         final TableColumnWeightModel tableColumnModel;
