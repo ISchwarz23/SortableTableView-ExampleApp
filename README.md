@@ -1,5 +1,6 @@
 # SortableTableView - Example App
-An example App that shows how the SortableTableView can be used. The App contains the following examples:
+An example App that shows how the [SortableTableView](http://www.sortabletableview.com) can be used. The App contains the 
+following examples:
 - rendering simple data
 - rendering custom data
 - dynamic loading of data
@@ -7,7 +8,7 @@ An example App that shows how the SortableTableView can be used. The App contain
 - sorting data
 - handle selection
 
-The example App can be downloaded from the Google PlayStore.
+The example App can be downloaded from the Google PlayStore.  
 [![Download Example App](http://www.clintonfitch.com/wp-content/uploads/2015/06/Google-Play-Button.jpg)](https://play.google.com/store/apps/details?id=com.sortabletableview.recyclerview.exampleapp)
 
 ### General Remark
