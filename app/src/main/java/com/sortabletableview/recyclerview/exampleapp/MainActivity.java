@@ -12,7 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import com.sortabletableview.recyclerview.exampleapp.customdata.CustomDataExampleFragment;
 import com.sortabletableview.recyclerview.exampleapp.loaddata.LoadDataFragment;
-import com.sortabletableview.recyclerview.exampleapp.searchdata.SearchDataFragment;
+import com.sortabletableview.recyclerview.exampleapp.filterdata.FilterDataFragment;
 import com.sortabletableview.recyclerview.exampleapp.selectionhandling.SelectionHandlingFragment;
 import com.sortabletableview.recyclerview.exampleapp.simpledata.SimpleDataExampleFragment;
 import com.sortabletableview.recyclerview.exampleapp.sortdata.SortDataExampleFragment;
@@ -87,9 +87,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 setActivityTitle(item.getTitle().toString());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, LoadDataFragment.newInstance()).commit();
                 break;
-            case R.id.nav_search_data:
+            case R.id.nav_filter_data:
                 setActivityTitle(item.getTitle().toString());
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SearchDataFragment.newInstance()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_container, FilterDataFragment.newInstance()).commit();
                 break;
             case R.id.nav_sort_data:
                 setActivityTitle(item.getTitle().toString());

@@ -17,9 +17,9 @@
                 android:icon="@drawable/ic_menu_load"
                 android:title="Load Data"/>
         <item
-                android:id="@+id/nav_search_data"
+                android:id="@+id/nav_filter_data"
                 android:icon="@drawable/ic_menu_search"
-                android:title="Search Data"/>
+                android:title="Filter Data"/>
         <item
                 android:id="@+id/nav_sort_data"
                 android:icon="@drawable/ic_menu_sort"

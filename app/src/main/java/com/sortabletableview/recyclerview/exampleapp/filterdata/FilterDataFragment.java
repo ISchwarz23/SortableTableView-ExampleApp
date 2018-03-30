@@ -1,4 +1,4 @@
-package com.sortabletableview.recyclerview.exampleapp.searchdata;
+package com.sortabletableview.recyclerview.exampleapp.filterdata;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -18,22 +18,19 @@ import com.sortabletableview.recyclerview.exampleapp.data.Flight;
 import com.sortabletableview.recyclerview.exampleapp.data.FlightRepository;
 import com.sortabletableview.recyclerview.exampleapp.simpledata.FlightStringValueExtractors;
 import com.sortabletableview.recyclerview.model.TableColumnWeightModel;
+import com.sortabletableview.recyclerview.toolkit.FilterHelper;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableDataColumnAdapter;
 import com.sortabletableview.recyclerview.toolkit.SimpleTableHeaderAdapter;
 import com.sortabletableview.recyclerview.toolkit.TableDataRowBackgroundProviders;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SearchDataFragment#newInstance} factory method to
+ * Use the {@link FilterDataFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public final class SearchDataFragment extends Fragment {
+public final class FilterDataFragment extends Fragment {
 
-    private final List<Flight> allFlights = FlightRepository.getAllFlights();
-    private TableDataColumnAdapterDelegator<Flight> dataAdapter;
+    private FilterHelper<Flight> filterHelper;
 
     /**
      * Use this factory method to create a new instance of
@@ -41,8 +38,8 @@ public final class SearchDataFragment extends Fragment {
      *
      * @return A new instance of fragment LoadDataFragment.
      */
-    public static SearchDataFragment newInstance() {
-        final SearchDataFragment fragment = new SearchDataFragment();
+    public static FilterDataFragment newInstance() {
+        final FilterDataFragment fragment = new FilterDataFragment();
         final Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -65,7 +62,7 @@ public final class SearchDataFragment extends Fragment {
         headerAdapter.setTextColor(ContextCompat.getColor(getContext(), R.color.colorHeaderText));
 
         // set up data adapter
-        dataAdapter = new TableDataColumnAdapterDelegator<>(getContext(), new ArrayList<>(allFlights));
+        final TableDataColumnAdapterDelegator<Flight> dataAdapter = new TableDataColumnAdapterDelegator<>(getContext(), FlightRepository.getAllFlights());
         dataAdapter.setColumnAdapter(0, new DepartureColumnAdapter());
         dataAdapter.setColumnAdapter(1, new AirlineColumnAdapter());
         dataAdapter.setColumnAdapter(2, new FlightNumberColumnAdapter());
@@ -100,6 +97,8 @@ public final class SearchDataFragment extends Fragment {
         tableColumnModel.setColumnWeight(3, 5);
         tableView.setColumnModel(tableColumnModel);
 
+        filterHelper = new FilterHelper<>(tableView);
+
         return view;
     }
 
@@ -116,44 +115,21 @@ public final class SearchDataFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(final String query) {
-                showFilteredData(query);
+                // ******************** Interesting Code Section **********************************************************
+                filterHelper.setFilter(new FlightFilter(query));
+                // ******************** Interesting Code Section **********************************************************
                 return false;
             }
         });
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                showAllData();
+                // ******************** Interesting Code Section **********************************************************
+                filterHelper.clearFilter();
+                // ******************** Interesting Code Section **********************************************************
                 return false;
             }
         });
         super.onCreateOptionsMenu(menu, inflater);
     }
-
-    private void showFilteredData(final String query) {
-        // ******************** Interesting Code Section **********************************************************************
-        dataAdapter.getData().clear();
-        dataAdapter.getData().addAll(getFilteredData(query));
-        dataAdapter.notifyDataSetChanged();
-        // ******************** Interesting Code Section **********************************************************************
-    }
-
-    private void showAllData() {
-        dataAdapter.getData().clear();
-        dataAdapter.getData().addAll(allFlights);
-        dataAdapter.notifyDataSetChanged();
-    }
-
-    private List<Flight> getFilteredData(final String query) {
-        final FlightPredicate filter = new FlightPredicate(query);
-
-        final List<Flight> filteredFlights = new ArrayList<>();
-        for (final Flight flight : allFlights) {
-            if (filter.matches(flight)) {
-                filteredFlights.add(flight);
-            }
-        }
-        return filteredFlights;
-    }
-
 }
