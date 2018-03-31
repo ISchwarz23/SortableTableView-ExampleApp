@@ -11,8 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import com.sortabletableview.recyclerview.exampleapp.customdata.CustomDataExampleFragment;
-import com.sortabletableview.recyclerview.exampleapp.loaddata.LoadDataFragment;
 import com.sortabletableview.recyclerview.exampleapp.filterdata.FilterDataFragment;
+import com.sortabletableview.recyclerview.exampleapp.loaddata.LoadDataFragment;
+import com.sortabletableview.recyclerview.exampleapp.paging.PagingExampleFragment;
 import com.sortabletableview.recyclerview.exampleapp.selectionhandling.SelectionHandlingFragment;
 import com.sortabletableview.recyclerview.exampleapp.simpledata.SimpleDataExampleFragment;
 import com.sortabletableview.recyclerview.exampleapp.sortdata.SortDataExampleFragment;
@@ -28,14 +29,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        final FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(final View view) {
-//                // do stuff
-//            }
-//        });
 
         if (savedInstanceState == null || savedInstanceState.getBoolean(FIRST_LAUNCH, true)) {
             getSupportFragmentManager().beginTransaction().replace(R.id.content_container, WelcomeFragment.newInstance()).commit();
@@ -90,6 +83,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_filter_data:
                 setActivityTitle(item.getTitle().toString());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, FilterDataFragment.newInstance()).commit();
+                break;
+            case R.id.nav_paging:
+                setActivityTitle(item.getTitle().toString());
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_container, PagingExampleFragment.newInstance()).commit();
                 break;
             case R.id.nav_sort_data:
                 setActivityTitle(item.getTitle().toString());

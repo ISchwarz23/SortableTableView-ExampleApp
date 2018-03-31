@@ -21,6 +21,10 @@
                 android:icon="@drawable/ic_menu_search"
                 android:title="Filter Data"/>
         <item
+                android:id="@+id/nav_paging"
+                android:icon="@drawable/ic_menu_paging"
+                android:title="Paging"/>
+        <item
                 android:id="@+id/nav_sort_data"
                 android:icon="@drawable/ic_menu_sort"
                 android:title="Sort Data"/>
