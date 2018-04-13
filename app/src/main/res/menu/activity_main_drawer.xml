@@ -32,6 +32,10 @@
                 android:id="@+id/nav_selection_handling"
                 android:icon="@drawable/ic_menu_selection"
                 android:title="Selection Handling"/>
+        <item
+                android:id="@+id/nav_horizontal_scrolling"
+                android:icon="@drawable/ic_horizontal_scrolling"
+                android:title="Horizontal Scrolling"/>
 
         <item android:title="Links">
             <menu android:checkableBehavior="single">

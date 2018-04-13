@@ -14,6 +14,7 @@ import com.sortabletableview.recyclerview.exampleapp.customdata.CustomDataExampl
 import com.sortabletableview.recyclerview.exampleapp.filterdata.FilterDataFragment;
 import com.sortabletableview.recyclerview.exampleapp.loaddata.LoadDataFragment;
 import com.sortabletableview.recyclerview.exampleapp.paging.PagingExampleFragment;
+import com.sortabletableview.recyclerview.exampleapp.scrollhorizontal.ScrollHorizontalExampleFragment;
 import com.sortabletableview.recyclerview.exampleapp.selectionhandling.SelectionHandlingFragment;
 import com.sortabletableview.recyclerview.exampleapp.simpledata.SimpleDataExampleFragment;
 import com.sortabletableview.recyclerview.exampleapp.sortdata.SortDataExampleFragment;
@@ -21,7 +22,7 @@ import com.sortabletableview.recyclerview.exampleapp.sortdata.SortDataExampleFra
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String FIRST_LAUNCH = "FIRST_LAUNCH";
-    private static String title = "Welcome";
+    private String title = "Welcome";
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -96,6 +97,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 setActivityTitle(item.getTitle().toString());
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, SelectionHandlingFragment.newInstance()).commit();
                 break;
+            case R.id.nav_horizontal_scrolling:
+                setActivityTitle(item.getTitle().toString());
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_container, ScrollHorizontalExampleFragment.newInstance()).commit();
+                break;
             case R.id.nav_see_on_github:
                 final Intent githubIntent = new Intent(Intent.ACTION_VIEW);
                 githubIntent.setData(Uri.parse("https://github.com/ISchwarz23/SortableTableView-ExampleApp?files=1"));
@@ -113,7 +118,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 mailIntent.putExtra(Intent.EXTRA_SUBJECT, "Support Request from Example App");
                 mailIntent.putExtra(Intent.EXTRA_TEXT, "");
                 startActivity(Intent.createChooser(mailIntent, "Send Email to Support"));
-//                startActivity(new Intent(this, SupportActivity.class));
                 break;
             default:
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_container, WelcomeFragment.newInstance()).commit();
