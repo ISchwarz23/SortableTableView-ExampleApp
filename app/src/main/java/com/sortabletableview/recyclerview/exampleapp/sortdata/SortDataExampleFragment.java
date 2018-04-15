@@ -23,17 +23,12 @@ import com.sortabletableview.recyclerview.toolkit.SimpleTableHeaderAdapter;
 import com.sortabletableview.recyclerview.toolkit.SortStateViewProviders;
 import com.sortabletableview.recyclerview.toolkit.TableDataRowBackgroundProviders;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SortDataExampleFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public final class SortDataExampleFragment extends Fragment {
-
-    private static final List<Flight> ALL_FLIGHTS = new ArrayList<>(FlightRepository.getAllFlights());
 
     /**
      * Use this factory method to create a new instance of
@@ -62,7 +57,7 @@ public final class SortDataExampleFragment extends Fragment {
         headerAdapter.setTextColor(ContextCompat.getColor(getContext(), R.color.colorHeaderText));
 
         // set up data adapter
-        final TableDataColumnAdapterDelegator<Flight> dataAdapter = new TableDataColumnAdapterDelegator<>(getContext(), ALL_FLIGHTS);
+        final TableDataColumnAdapterDelegator<Flight> dataAdapter = new TableDataColumnAdapterDelegator<>(getContext(), FlightRepository.getAllFlights());
         dataAdapter.setColumnAdapter(0, new DepartureColumnAdapter());
         dataAdapter.setColumnAdapter(1, new AirlineColumnAdapter());
         dataAdapter.setColumnAdapter(2, new FlightNumberColumnAdapter());

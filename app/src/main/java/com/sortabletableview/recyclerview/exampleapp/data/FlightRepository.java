@@ -22,7 +22,7 @@ public final class FlightRepository {
     }
 
     public static List<Flight> getAllFlights() {
-        return FLIGHTS;
+        return new ArrayList<>(FLIGHTS);
     }
 
     static {
