@@ -7,7 +7,7 @@ android {
         applicationId "com.sortabletableview.recyclerview.exampleapp"
         minSdkVersion 14
         targetSdkVersion 27
-        versionCode 8
+        versionCode 9
         versionName "3.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
