@@ -7,8 +7,8 @@ android {
         applicationId "com.sortabletableview.recyclerview.exampleapp"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 10
-        versionName "3.1.0"
+        versionCode 11
+        versionName "3.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -21,7 +21,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'com.sortabletableview.recyclerview:sortabletableview:3.1.0'
+    implementation 'com.sortabletableview.recyclerview:sortabletableview:3.1.1'
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
